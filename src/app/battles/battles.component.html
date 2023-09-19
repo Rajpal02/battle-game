@@ -1,0 +1,31 @@
+<div class="battles-container">
+    <h2>Battles</h2>
+
+    <!-- Battle cards -->
+    <div *ngFor="let battle of battles" class="battle-card">
+        <div class="battle-card-details">
+            <p>Attacker: {{ battle.attacker }}</p>
+            <p>Defender: {{ battle.defender }}</p>
+            <p>Status: {{ battle.status }}</p>
+        </div>
+
+        <!-- Update and Delete buttons -->
+        <div class="battle-card-actions">
+            <button class="btn btn-primary" (click)="updateBattle(battle)">Update</button>
+            <button class="btn btn-danger" (click)="battle._id && deleteBattle(battle._id)">Delete</button>
+        </div>
+    </div>
+
+    <!-- Create Battle Form -->
+    <form [formGroup]="battleForm" (submit)="submitBattle()">
+        <div class="form-group">
+            <label for="attacker">Attacker:</label>
+            <input type="text" class="form-control" id="attacker" formControlName="attacker" required>
+        </div>
+        <div class="form-group">
+            <label for="defender">Defender:</label>
+            <input type="text" class="form-control" id="defender" formControlName="defender" required>
+        </div>
+        <button type="submit" class="submit-button">Submit Battle</button>
+    </form>
+</div>

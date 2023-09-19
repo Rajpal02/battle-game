@@ -1,0 +1,24 @@
+<div class="container">
+    <h2>Leaderboard</h2>
+
+    <!-- Display error message if there's an error -->
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+    <!-- Display leaderboard -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Player Identifier</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let entry of leaderboardEntries">
+                <td>{{ entry.rank }}</td>
+                <td>{{ entry.playerIdentifier }}</td>
+                <td>{{ entry.score }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,61 @@
+<div class="container">
+    <h2>Players</h2>
+
+    <!-- Display error message if there's an error -->
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+    <!-- Create a new player form -->
+    <form [formGroup]="playerForm" (submit)="createPlayer()">
+        <div class="form-group">
+            <label for="identifier">Identifier:</label>
+            <input type="text" class="form-control" id="identifier" formControlName="identifier" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" formControlName="name" required>
+        </div>
+        <div class="form-group">
+            <label for="amountOfGold">Amount of Gold:</label>
+            <input type="number" class="form-control" id="amountOfGold" formControlName="amountOfGold" required>
+        </div>
+        <div class="form-group">
+            <label for="attack">Attack:</label>
+            <input type="number" class="form-control" id="attack" formControlName="attack" required>
+        </div>
+        <div class="form-group">
+            <label for="hitPoints">Hit Points:</label>
+            <input type="number" class="form-control" id="hitPoints" formControlName="hitPoints" required>
+        </div>
+        <div class="form-group">
+            <label for="luck">Luck:</label>
+            <input type="number" class="form-control" id="luck" formControlName="luck" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Player</button>
+    </form>
+
+    <hr>
+
+    <!-- Display list of players -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Identifier</th>
+                <th>Name</th>
+                <th>Amount of Gold</th>
+                <th>Attack</th>
+                <th>Hit Points</th>
+                <th>Luck</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let player of players">
+                <td>{{ player.identifier }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.amountOfGold }}</td>
+                <td>{{ player.attack }}</td>
+                <td>{{ player.hitPoints }}</td>
+                <td>{{ player.luck }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
