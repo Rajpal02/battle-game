@@ -17,7 +17,6 @@ function authMiddleware(req, res, next) {
     // Verify the token using the secret key
     const decoded = jwt.verify(token, JWT_SECRET);
 
-    // Attach the decoded user (or relevant data) to the request object
     req.user = decoded;
 
     // Continue to the next middleware or route handler
@@ -30,7 +29,7 @@ function authMiddleware(req, res, next) {
 
 // Function to generate a JWT token
 function generateToken(data) {
-  return jwt.sign(data, JWT_SECRET, { expiresIn: "1h" }); // Token expires in 1 hour
+  return jwt.sign(data, JWT_SECRET, { expiresIn: "1h" });
 }
 
 module.exports = { authMiddleware, generateToken };

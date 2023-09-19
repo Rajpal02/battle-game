@@ -2,20 +2,20 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const { battleQueue } = require("./battleProcessor"); // Import the battleQueue
-const playersRouter = require("./routes/players"); // Import players router
-const battlesRouter = require("./routes/battles"); // Import battles router
-const leaderboardRouter = require("./routes/leaderboard"); // Import leaderboard router
-const { authMiddleware } = require("./middleware/authMiddleware"); // Import the authMiddleware
-const errorHandler = require("./middleware/errorHandler"); // Import the errorHandler middleware
+const { battleQueue } = require("./battleProcessor");
+const playersRouter = require("./routes/players");
+const battlesRouter = require("./routes/battles");
+const leaderboardRouter = require("./routes/leaderboard");
+const { authMiddleware } = require("./middleware/authMiddleware");
+const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: "http://localhost:4200", // Replace with your Angular app's URL
+  origin: "http://localhost:4200",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true, // Set to true if your Angular app sends credentials (e.g., cookies)
+  credentials: true,
 };
 
 // Middleware
@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
 // MongoDB Configuration
-const mongoURI = "mongodb://localhost:27017/battle-game";
+const mongoURI = "mongodb://localhost/battle-game";
 mongoose
   .connect(mongoURI, {
     useNewUrlParser: true,
@@ -37,9 +37,9 @@ mongoose
   });
 
 // Routes
-app.use("/api/players", authMiddleware, playersRouter); // Protect players routes with authMiddleware
-app.use("/api/battles", authMiddleware, battlesRouter); // Protect battles routes with authMiddleware
-app.use("/api/leaderboard", authMiddleware, leaderboardRouter); // Protect leaderboard route with authMiddleware
+app.use("/api/players", authMiddleware, playersRouter);
+app.use("/api/battles", authMiddleware, battlesRouter);
+app.use("/api/leaderboard", authMiddleware, leaderboardRouter);
 
 // Error handling middleware
 app.use(errorHandler);

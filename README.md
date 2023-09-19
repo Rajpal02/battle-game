@@ -4,7 +4,7 @@
 
 ## Node Backend
 
-Run `node server.js` for a dev server. It will run on localhost:3000
+Run `node server.js` for a dev server. It will run on localhost:3000, run it inside the battle-game folder.
 
 ## MongoDB
 

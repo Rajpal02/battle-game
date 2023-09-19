@@ -1,5 +1,5 @@
 export interface Player {
-  _id: string; // Unique identifier for the player (you may use a different identifier)
+  _id: string;
   identifier: string;
   name: string;
   amountOfGold: number;

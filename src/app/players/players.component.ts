@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerService } from '../player.service'; // Import your PlayerService
-import { Player } from '../models/player.model'; // Import your Player model
+import { PlayerService } from '../player.service'; 
+import { Player } from '../models/player.model'; 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -33,7 +33,7 @@ export class PlayersComponent implements OnInit {
     this.loadPlayers();
   }
 
-  // Load players from the backend
+
   loadPlayers(): void {
     this.isLoading = true;
     this.errorMessage = null;
@@ -51,7 +51,6 @@ export class PlayersComponent implements OnInit {
     );
   }
 
-  // Create a new player
   createPlayer(): void {
     if (this.playerForm.invalid) {
       return;
@@ -60,13 +59,12 @@ export class PlayersComponent implements OnInit {
     this.isLoading = true;
     this.errorMessage = null;
 
-    const newPlayer: Player = this.playerForm.value; // Define newPlayer here
+    const newPlayer: Player = this.playerForm.value;
 
     this.playerService.createPlayer(newPlayer).subscribe(
       (player) => {
         this.players.push(player);
         this.isLoading = false;
-        // Reset the form after successful creation
         this.playerForm.reset({
           identifier: '',
           name: '',

@@ -1,4 +1,3 @@
-/* Style the container */
 .players-container {
     margin: 20px;
     padding: 20px;
@@ -6,12 +5,12 @@
     border-radius: 5px;
 }
 
-/* Style form elements */
+
 .form-group {
     margin-bottom: 15px;
 }
 
-/* Style the submit button */
+
 .submit-button {
     background-color: #007bff;
     color: #fff;

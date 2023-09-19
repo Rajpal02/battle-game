@@ -8,7 +8,6 @@ router.post("/", async (req, res) => {
     const { identifier, name, amountOfGold, attack, hitPoints, luck } =
       req.body;
 
-    // Validate player data (you can add more validation as needed)
     if (
       !identifier ||
       !name ||

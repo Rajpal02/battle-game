@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-// Define the Player schema
 const playerSchema = new mongoose.Schema({
   identifier: {
     type: String,
@@ -15,8 +14,8 @@ const playerSchema = new mongoose.Schema({
   },
   amountOfGold: {
     type: Number,
-    max: 1000000000, // Max value of 1 billion
-    default: 0, // Default value is 0
+    max: 1000000000,
+    default: 0,
   },
   attack: {
     type: Number,
@@ -31,7 +30,6 @@ const playerSchema = new mongoose.Schema({
   },
 });
 
-// Create the Player model
 const Player = mongoose.model("Player", playerSchema);
 
 module.exports = Player;

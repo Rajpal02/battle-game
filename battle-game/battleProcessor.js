@@ -5,8 +5,8 @@ const Player = require("./models/player");
 // Create a Bull queue for processing battles
 const battleQueue = new Queue("battles", {
   limiter: {
-    max: 1, // Maximum number of jobs that can be processed at a time
-    duration: 1000, // Time frame (in milliseconds) for the maximum job count
+    max: 1,
+    duration: 1000,
   },
 });
 
@@ -52,7 +52,6 @@ const battleWorker = new Queue("battles", async (job) => {
     // Save changes to the database
     await Promise.all([attacker.save(), defender.save(), battle.save()]);
 
-    // Acknowledge job completion
     job.progress(100);
   } catch (error) {
     // Log the error and handle it
@@ -64,7 +63,6 @@ const battleWorker = new Queue("battles", async (job) => {
 });
 
 function simulateBattle(attacker, defender) {
-  // Initialize battle report
   let battleReport = "";
 
   // Calculate the maximum damage an attacker can deal (50% of their attack value)
@@ -78,7 +76,6 @@ function simulateBattle(attacker, defender) {
   let round = 1;
 
   while (attackerHitPoints > 0 && defenderHitPoints > 0) {
-    // Calculate damage for the attacker (random value between 1 and maxDamage)
     const damage = Math.floor(Math.random() * maxDamage) + 1;
 
     // Apply damage to the defender's hit points
@@ -93,7 +90,6 @@ function simulateBattle(attacker, defender) {
       attackerHitPoints,
     ];
 
-    // Increment the round counter
     round++;
   }
 
