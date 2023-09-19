@@ -23,21 +23,17 @@ app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
 // MongoDB Configuration
-const mongoURI = "mongodb://localhost/battle-game";
+const mongoURI = "mongodb://127.0.0.1:27017/battle-game";
 mongoose
   .connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => {
-    console.log("MongoDB Connected");
-  })
-  .catch((err) => {
-    console.error("MongoDB Connection Error:", err);
-  });
+  .then(() => console.log("Mongo Connected"))
+  .catch((err) => console.log(err));
 
 // Routes
-app.use("/api/players", authMiddleware, playersRouter);
+app.use("/api/players", playersRouter);
 app.use("/api/battles", authMiddleware, battlesRouter);
 app.use("/api/leaderboard", authMiddleware, leaderboardRouter);
 

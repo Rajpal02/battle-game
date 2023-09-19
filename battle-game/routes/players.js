@@ -5,7 +5,7 @@ const Player = require("../models/player");
 // Route to create a new player
 router.post("/", async (req, res) => {
   try {
-    const { identifier, name, amountOfGold, attack, hitPoints, luck } =
+    const { identifier, name, amountOfGold, attack, hitPoints, luckValue } =
       req.body;
 
     if (
@@ -14,9 +14,11 @@ router.post("/", async (req, res) => {
       !amountOfGold ||
       !attack ||
       !hitPoints ||
-      !luck
+      !luckValue
     ) {
-      return res.status(400).json({ message: "All fields are required" });
+      return res.status(400).json({
+        message: "All fields are required",
+      });
     }
 
     // Check if a player with the same name already exists
@@ -35,7 +37,7 @@ router.post("/", async (req, res) => {
       amountOfGold,
       attack,
       hitPoints,
-      luck,
+      luckValue,
     });
 
     // Save the player to the database
